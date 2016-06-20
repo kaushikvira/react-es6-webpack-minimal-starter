@@ -6,24 +6,18 @@ import React, {Component, PropTypes} from 'react';
 class Contact extends Component {
     constructor() {
         super();
-        this.state = {expanded: true};
+        this.state = {isExpanded: true};
     }
 
     render() {
-        console.log("Rendering");
-
         return <div onClick={this.handleClick.bind(this)}>
-            {this.state.expanded ? "V  " : ">  "}My name is {this.props.firstName} {this.props.lastName}
-            {this.state.expanded ? <div>I live in {this.props.city}</div> : <div></div>}
+            {this.state.isExpanded ? "V  " : ">  "}My name is {this.props.firstName} {this.props.lastName}
+            {this.state.isExpanded ? <div>I live in {this.props.city}</div> : ""}
         </div>;
     }
 
     handleClick() {
-        if (this.state.expanded) {
-            this.setState({expanded: false})
-        } else {
-            this.setState({expanded: true})
-        }
+        this.setState({isExpanded: !this.state.isExpanded})
     }
 }
 Contact.propTypes = {
