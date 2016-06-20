@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 
 ReactDOM.render((
-    <Hello />
-  ),
-  document.getElementById('example')
+        <Hello message="My Prop"/>
+    ),
+    document.getElementById('example')
 );
