@@ -16,6 +16,8 @@ class MyInput extends Component {
         return <div>
             <input value={this.state.tweet} onChange={this.onChange.bind(this)}/>
             <div>Remaining {this.state.remaining}</div>
+
+            <button onClick={this.send.bind(this)}>Send</button>
         </div>
     }
 
@@ -30,8 +32,16 @@ class MyInput extends Component {
 
     countRemaining(value) {
         let remaining = this.maxChar - value.length;
-        remaining < 0 ? 0 : remaining;
+        return remaining <= 0 ? 0 : remaining;
 
+    }
+
+    send() {
+        if (this.state.tweet != undefined && this.state.tweet.length === 0) {
+            console.log("We need message to Send");
+        } else {
+            console.log(this.state.tweet);
+        }
     }
 }
 
