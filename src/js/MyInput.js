@@ -1,7 +1,7 @@
 /*eslint no-debugger:0,no-console: 0*/
 'use strict';
 
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 class MyInput extends Component {
 
@@ -37,13 +37,12 @@ class MyInput extends Component {
     }
 
     send() {
-        if (this.state.tweet != undefined && this.state.tweet.length === 0) {
-            console.log("We need message to Send");
-        } else {
-            console.log(this.state.tweet);
-        }
+        console.log(this.state.tweet)
+        this.props.send(this.state.tweet);
     }
 }
 
-
+MyInput.propTypes = {
+    send: PropTypes.func.isRequired
+};
 export default MyInput;

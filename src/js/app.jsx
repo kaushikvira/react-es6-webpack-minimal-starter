@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyInput from './MyInput.js';
+import TweetBox from './TweetBox.js';
 
 ReactDOM.render((
-        <MyInput />
+        <TweetBox />
     ),
     document.getElementById('example')
 );
