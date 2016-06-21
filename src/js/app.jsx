@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TweetBox from './TweetBox.js';
+import Invoice from './Invoice';
 
 ReactDOM.render((
-        <TweetBox />
+        <Invoice />
     ),
     document.getElementById('example')
 );

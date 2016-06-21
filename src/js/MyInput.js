@@ -11,7 +11,7 @@ class MyInput extends Component {
         this.initText = "Hellllo";
         this.state = {tweet: this.initText, remaining: this.countRemaining(this.initText)};
         this.onChange = this.onChange.bind(this);
-        this.send =this.send.bind(this);
+        this.send = this.send.bind(this);
     }
 
     render() {
@@ -34,7 +34,6 @@ class MyInput extends Component {
     countRemaining(value) {
         let remaining = this.maxChar - value.length;
         return remaining <= 0 ? 0 : remaining;
-
     }
 
     send() {
