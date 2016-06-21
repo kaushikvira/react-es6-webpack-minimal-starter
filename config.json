@@ -1,0 +1,11 @@
+{
+  "mockDirectory": "/Users/kvira2/home/code/tranning/react-es6-webpack-minimal-starter",
+  "quiet": false,
+  "port": "8060",
+  "webServices": {
+    "api/contacts": {
+      "mockFile": "contacts.json",
+      "verbs": ["get"]
+    }
+  }
+}

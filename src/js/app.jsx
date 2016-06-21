@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Contact from './Contact';
-import Hello from './Hello';
-
+import MyInput from './MyInput.js';
 
 ReactDOM.render((
-    <div>
-        <Contact firstName="kaushik" lastName="Vira" city="Fremont, CA."/>
-        <Hello message="Hellllo"/>
-        </div>
+        <MyInput />
     ),
     document.getElementById('example')
 );
+
+
+

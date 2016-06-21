@@ -10,14 +10,23 @@ class Contact extends Component {
     }
 
     render() {
+        console.log("Run Render again..")
         return <div onClick={this.handleClick.bind(this)}>
-            {this.state.isExpanded ? "V  " : ">  "}My name is {this.props.firstName} {this.props.lastName}
+            {this.state.isExpanded ? "  V  " : ">  "}My name is {this.props.firstName} {this.props.lastName}
             {this.state.isExpanded ? <div>I live in {this.props.city}</div> : ""}
         </div>;
     }
 
     handleClick() {
         this.setState({isExpanded: !this.state.isExpanded})
+    }
+
+    componentWillMount() {
+        console.log("Contact componentWillMount");
+    }
+
+    componentDidMount() {
+        console.log("Contact componentDidMount ");
     }
 }
 Contact.propTypes = {
