@@ -13,7 +13,7 @@ class TweetBox extends Component {
 
     render() {
         return <div>
-            <MyInput send={this.send.bind(this)}/>
+            <MyInput send={this.send}/>
         </div>
     }
 

@@ -10,14 +10,15 @@ class MyInput extends Component {
         this.maxChar = 10;
         this.initText = "Hellllo";
         this.state = {tweet: this.initText, remaining: this.countRemaining(this.initText)};
+        this.onChange = this.onChange.bind(this);
+        this.send =this.send.bind(this);
     }
 
     render() {
         return <div>
-            <input value={this.state.tweet} onChange={this.onChange.bind(this)}/>
+            <input value={this.state.tweet} onChange={this.onChange}/>
             <div>Remaining {this.state.remaining}</div>
-
-            <button onClick={this.send.bind(this)}>Send</button>
+            <button onClick={this.send}>Send</button>
         </div>
     }
 
@@ -25,7 +26,7 @@ class MyInput extends Component {
         let value = event.target.value
         let remaining = this.countRemaining(value);
         if (remaining <= 0) {
-            value = this.state.tweet;
+            return;
         }
         this.setState({tweet: value, remaining: remaining})
     }
