@@ -18,40 +18,47 @@ class Invoice extends Component {
             price: 1.00
         }
         this.state = {
-            lineItems: []
+            lineItems: [this.createDefaultObejct()]
             , total: 0
         }
         this.updateTotal = this.updateTotal.bind(this);
+        this.removeLineItem = this.removeLineItem.bind(this);
+    }
+
+    guid() {
+        return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' + this.s4() + this.s4() + this.s4();
+    }
+
+    s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
     }
 
     render() {
 
-        var updateTotal = this.updateTotal;
 
         return <div>
             <div>
-                <div>
-                    <span onClick={this.addLineItem.bind(this)}>Add</span><span onClick={this.removeLineItem.bind(this)}>Remove</span>
-                </div>
+
                 <div>Header</div>
             </div>
-
-
             <div>
-                {this.state.lineItems.map(function(lineItemObject, index) {
-
-                    return <LineItem key={index} lineItemObject={lineItemObject} updateTotal={updateTotal}>  </LineItem>
+                {this.state.lineItems.map((lineItemObject,index) => {
+                    return <LineItem key={lineItemObject.id} id={lineItemObject.id} lineNumber={index+1} lineItemObject={lineItemObject} updateTotal={this.updateTotal} delete={this.removeLineItem}> </LineItem>
                 })}
             </div>
+            <div><span onClick={this.addLineItem.bind(this)}>Add</span></div>
             <div>
                 <TotalPrice total={this.state.total}/>
             </div>
         </div>
     }
 
-    updateTotal(){
-      this.setState({total:this.total()});
+    updateTotal() {
+        this.setState({total: this.total()});
     }
+
     total() {
         let total = 0;
         for (var {price: price, quantity:quantity}  of this.state.lineItems) {
@@ -61,17 +68,23 @@ class Invoice extends Component {
     }
 
     addLineItem() {
-        this.state.lineItems.push(Object.create(this.defaultLineItem));
+        let object = this.createDefaultObejct();
+        this.state.lineItems.push(object);
         this.setState({lineItems: this.state.lineItems, total: this.total()});
         console.log(this.state.lineItems)
-
-
     }
 
-    removeLineItem() {
-        this.state.lineItems.pop();
+    createDefaultObejct() {
+        let object = Object.create(this.defaultLineItem);
+        object.id = this.guid();
+        return object;
+    }
+
+    removeLineItem(item) {
+        var index = this.state.lineItems.indexOf(item);
+        this.state.lineItems.splice(index, 1)
         this.setState({lineItems: this.state.lineItems, total: this.total()});
-        console.log(this.state.lineItems)
+
     }
 }
 

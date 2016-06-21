@@ -12,14 +12,21 @@ class LineItem extends Component {
 
     render() {
         return <div>
+            <span>{this.props.lineNumber}</span>
             <span><input type="number" value={this.state.lineItemObject.quantity} onChange={this.quantityChange.bind(this)}/>   </span>
             <span><input value={this.state.lineItemObject.desc} onChange={this.descChange.bind(this)}/>   </span>
             <span><input type="number" value={this.state.lineItemObject.price} onChange={this.priceChange.bind(this)}/>   </span>
+            <span onClick={this.onDelete.bind(this)}>  Delete  </span>
+
         </div>
     }
 
+    onDelete() {
+        this.props.delete(this.state.lineItemObject);
+    }
+
     quantityChange(event) {
-       
+
         let object = this.state.lineItemObject;
         object.quantity = event.target.value;
         this.setState({lineItemObject: this.state.lineItemObject})
@@ -42,8 +49,11 @@ class LineItem extends Component {
 
 }
 LineItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    lineNumber:PropTypes.number.isRequired,
     lineItemObject: PropTypes.object.isRequired,
-    updateTotal: PropTypes.func.isRequired
+    updateTotal: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired
 };
 
 export default LineItem;
