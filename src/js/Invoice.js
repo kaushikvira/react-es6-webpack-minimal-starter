@@ -39,13 +39,14 @@ class Invoice extends Component {
 
 
         return <div>
-            <div>
-
+            {this.state.lineItems.length > 0 ? <div>
                 <div>Header</div>
-            </div>
+            </div> : null}
+
             <div>
-                {this.state.lineItems.map((lineItemObject,index) => {
-                    return <LineItem key={lineItemObject.id} id={lineItemObject.id} lineNumber={index+1} lineItemObject={lineItemObject} updateTotal={this.updateTotal} delete={this.removeLineItem}> </LineItem>
+                {this.state.lineItems.map((lineItemObject, index) => {
+                    return <LineItem key={lineItemObject.id} id={lineItemObject.id} lineNumber={index+1}
+                                     lineItemObject={lineItemObject} updateTotal={this.updateTotal} delete={this.removeLineItem}> </LineItem>
                 })}
             </div>
             <div><span onClick={this.addLineItem.bind(this)}>Add</span></div>
@@ -82,7 +83,7 @@ class Invoice extends Component {
 
     removeLineItem(item) {
         var index = this.state.lineItems.indexOf(item);
-        this.state.lineItems.splice(index, 1)
+        this.state.lineItems.splice(index, 1);
         this.setState({lineItems: this.state.lineItems, total: this.total()});
 
     }

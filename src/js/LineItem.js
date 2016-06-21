@@ -48,7 +48,7 @@ class LineItem extends Component {
 
 }
 LineItem.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     lineNumber:PropTypes.number.isRequired,
     lineItemObject: PropTypes.object.isRequired,
     updateTotal: PropTypes.func.isRequired,
