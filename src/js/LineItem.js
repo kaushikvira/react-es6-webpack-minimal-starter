@@ -26,7 +26,6 @@ class LineItem extends Component {
     }
 
     quantityChange(event) {
-
         let object = this.state.lineItemObject;
         object.quantity = event.target.value;
         this.setState({lineItemObject: this.state.lineItemObject})

@@ -18,7 +18,7 @@ class Invoice extends Component {
             price: 1.00
         }
         this.state = {
-            lineItems: [this.createDefaultObejct()]
+            lineItems: [this.createDefaultObject()]
             , total: 0
         }
         this.updateTotal = this.updateTotal.bind(this);
@@ -68,13 +68,13 @@ class Invoice extends Component {
     }
 
     addLineItem() {
-        let object = this.createDefaultObejct();
+        let object = this.createDefaultObject();
         this.state.lineItems.push(object);
         this.setState({lineItems: this.state.lineItems, total: this.total()});
         console.log(this.state.lineItems)
     }
 
-    createDefaultObejct() {
+    createDefaultObject() {
         let object = Object.create(this.defaultLineItem);
         object.id = this.guid();
         return object;
